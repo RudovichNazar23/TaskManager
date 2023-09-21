@@ -1,6 +1,18 @@
 "use strict";
 
 // Add form validators
+function checkAllformFields(event){
+    let inputs = Array.from(document.body.querySelectorAll("input"));
+    inputs.push(document.querySelector("textarea"));
+    let button = document.body.querySelector("button[type=submit]");
+    let empty_fields = inputs.filter((node) => !node.value);
+
+    if (empty_fields.length >= 1){
+        button.classList.add("disabled");
+    }
+    else{ button.classList.remove("disabled");}
+}  
+
 function checkFieldIsEmpty(event){
     let input = event.target;
     if(!input.value){

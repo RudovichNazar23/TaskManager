@@ -13,7 +13,7 @@
     </a>
     <div class="container mt-4 p-3 border rounded">
         <h2>Create Task</h2>
-        <form>
+        <form onmouseover="checkAllformFields(event)">
             <div class="form-group">
                 <label for="title">Title:</label>
                 <input type="text" class="form-control" id="title" placeholder="Enter task title" onblur="checkFieldIsEmpty(event)" onfocus="focusFormField(event)">
@@ -65,5 +65,8 @@
     <script src="../js/task_object.js"></script>
     <script src="../js/localStorage.js"></script>
     <script src="../js/createTaskForm.js"></script>
+    <script src="../js/createTaskForm.js">
+        console.log(localStorage);
+    </script>
 </body>
 </html>

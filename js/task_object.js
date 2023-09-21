@@ -2,6 +2,7 @@
 
 
 class TaskObject {
+
     constructor(title, content, category, date_start, date_finish, date_remind, priority){
         this.title = title;
         this.content = content;
@@ -11,4 +12,9 @@ class TaskObject {
         this.date_remind = date_remind;
         this.priority = priority;
     }
+}
+
+
+function createTaskObject(title, content, category, date_start, date_finish, date_remind, priority){
+    return new TaskObject(title, content, category, date_start, date_finish, date_remind, priority);
 }

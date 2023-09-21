@@ -16,7 +16,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item active p-2">
                     <a class="nav-link" href="#" onclick="showMenu(event)">Category</a>
-                    <ul class="drop-menu" style="list-style-type: none;">
+                    <ul class="drop-menu" style="list-style-type: none; display:none;">
                         <li>Sport</li>
                         <li>Study</li>
                         <li>Travel</li>
@@ -25,7 +25,7 @@
                 </li>   
                 <li class="nav-item active p-2">
                     <a class="nav-link" href="#" onclick="showMenu(event)">Priority</a>
-                    <ul class="drop-menu" style="list-style-type: none;">
+                    <ul class="drop-menu" style="list-style-type: none; display: none;">
                         <li>Low</li>
                         <li>Medium</li>
                         <li>High</li>
@@ -62,5 +62,10 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../js/show_menu.js"></script>
+    <script>
+        // let t = localStorage.getItem("Test");
+        // console.log(JSON.parse(t));
+        // console.log(localStorage.getItem("Test"));
+    </script>
 </body>
 </html>

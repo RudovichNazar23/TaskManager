@@ -1,9 +1,7 @@
 "use strict";
 
 function showMenu(event){
-    if (event.target.tagName === "A"){
+        console.log("On Body")
         let list = event.target.nextSibling.nextSibling;
-        list.style.display === "none"?list.style.display = "block":list.style.display = "none";
-    }
-    else{ return; }  
+        return list.style.display === "none"?list.style.display = "block":list.style.display = "none";
 }

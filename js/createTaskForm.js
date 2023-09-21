@@ -11,13 +11,13 @@ function checkAllformFields(event){
         button.classList.add("disabled");
     }
     else{ button.classList.remove("disabled");}
-}  
+};
 
 function checkFieldIsEmpty(event){
     let input = event.target;
     if(!input.value){
-        input.classList.add("invalid")
-        input.nextSibling.nextSibling.innerHTML = "This field is empty"
+        input.classList.add("invalid");
+        input.nextSibling.nextSibling.innerHTML = "This field is empty";
     }
 };
 
@@ -44,4 +44,4 @@ function getFormData(event){
 
     let taskObject = createTaskObject(title, content, date_start, date_finish, reminder, category, priority);
     addToLocalStorage(taskObject);
-}
+};

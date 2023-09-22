@@ -37,3 +37,16 @@ date_finish.addEventListener("blur", function(event){
         err_div.innerHTML = "";
     }
 });
+
+let reminder = document.getElementById("date_remind");
+
+reminder.addEventListener("blur", function(event){
+    let err_div = reminder.nextElementSibling;
+    if (!(new Date(date_start.value) < new Date(reminder.value) && new Date(reminder.value) < new Date(date_finish.value))){
+        err_div.classList.add("invalid");
+        err_div.innerHTML = "This date must be between <strong>Date start</strong> and <strong>Date end</strong>";
+    }else{
+        err_div.classList.remove("invalid");
+        err_div.innerHTML = "";
+    }
+});

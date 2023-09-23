@@ -17,28 +17,36 @@ function focusFormField(event){
     }
 };
 
-function getFormData(event){
-    event.preventDefault();
+class SaveTaskObject{
+    handleEvent(event){
+        event.preventDefault();
+        this.addToLocalStorage(this.getTaskObject());
+        location.reload();
+    };
 
-    if (!event.target.tagName === "BUTTON"){ return; }
+    getTaskObject(){
+        let title = document.getElementById("title").value;
+        let content = document.getElementById("content").value;
+        let date_start = document.getElementById("date_start").value;
+        let date_finish = document.getElementById("date_finish").value;
+        let date_remind = document.getElementById("date_remind").value;
+        let category = document.getElementById("category").value;
+        let priority = document.getElementById("priority").value;
 
-    let title = document.getElementById("title").value;
-    let content = document.getElementById("content").value;
-    let date_start = document.getElementById("date_start").value;
-    let date_finish = document.getElementById("date_finish").value;
-    let reminder = document.getElementById("date_remind").value;
-    let category = document.getElementById("category").value;
-    let priority = document.getElementById("priority").value;
+        let taskObject = createTaskObject(title, content, category, date_start, date_finish, date_remind, priority);
+        return taskObject;
+    };
 
-    let taskObject = createTaskObject(title, content, date_start, date_finish, reminder, category, priority);
-    addToLocalStorage(taskObject);
+    addToLocalStorage(obj){
+        localStorage.setItem(obj.title, JSON.stringify(obj));
+    };
 };
-
 
 class FormHandler{
     handleEvent(){
         this.checkAllformFields();
-    }
+    };
+
     checkDivError(){
         let err_divs = document.body.querySelectorAll("div[id=error]");
         for (let div of err_divs){
@@ -47,7 +55,7 @@ class FormHandler{
             }
         }
         return false;
-    }
+    };
     
     checkAllformFields(){
         let inputs = Array.from(document.body.querySelectorAll("input"));
@@ -64,3 +72,6 @@ class FormHandler{
 
 let form = document.body.querySelector("form");
 form.addEventListener("mouseover", new FormHandler());
+
+let button = document.body.querySelector("button");
+button.addEventListener("click", new SaveTaskObject());

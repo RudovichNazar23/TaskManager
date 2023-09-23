@@ -1,6 +1,5 @@
 "use strict";
 
-
 let date_start = document.getElementById("date_start");
 let date_finish = document.getElementById("date_finish");
 

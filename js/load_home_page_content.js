@@ -41,7 +41,7 @@ class ShowTasksHandler {
             }
         }
         return elem;
-    }
+    };
 
     createCard(title, content, category, priority){
         let card_div = this.createDomElement("div", ["card", "mt-3"]);
@@ -67,9 +67,16 @@ class ShowTasksHandler {
 
         let update_link = this.createDomElement("a", ["btn", "btn-success", "m-2", "p-2"]);
         update_link.innerHTML = "Update";
+        update_link.dataset.title = title;
+        update_link.href = "update_task.html";
+        update_link.onclick = function update(event){
+            sessionStorage.setItem("update", event.target.dataset.title);
+        };
 
         let delete_link = this.createDomElement("a", ["btn", "btn-danger", "m-2", "p-2"]);
         delete_link.innerHTML = "Delete";
+        delete_link.dataset.title = title;
+        delete_link.addEventListener("click", new DeleteTaskHandler(delete_link));
 
         this.card_container.append(card_div);
 
@@ -89,6 +96,6 @@ class ShowTasksHandler {
         card_body.append(update_link);
         card_body.append(delete_link);
     };
-}
+};
 
 window.addEventListener("load", new ShowTasksHandler());

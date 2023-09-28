@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/create_task.css">
 </head>
 <body>
     <a href="home_page.html" class="btn btn-dark m-3">
@@ -15,27 +16,27 @@
         <form>
             <div class="form-group">
                 <label for="title">Title:</label>
-                <input type="text" class="form-control" id="title" placeholder="Enter task title">
+                <input type="text" class="form-control" id="title" placeholder="Enter task title" onblur="checkFieldIsEmpty(event)" onfocus="focusFormField(event)">
                 <div id="error" class="p-2 m-1"></div>
             </div>
             <div class="form-group">
                 <label for="content">Content</label>
-                <textarea class="form-control" id="content" rows="4" placeholder="I want to pass my exams..."></textarea>
+                <textarea class="form-control" id="content" rows="4" placeholder="I want to pass my exams..." onblur="checkFieldIsEmpty(event)" onfocus="focusFormField(event)"></textarea>
                 <div id="error" class="p-2 m-1"></div>
             </div>
             <div class="form-group">
                 <label for="date_start">Date start</label>
-                <input type="date" class="form-control" id="date_start">
+                <input type="date" class="form-control" id="date_start" onblur="checkFieldIsEmpty(event)" onfocus="focusFormField(event)">
                 <div id="error" class="p-2 m-1"></div>
             </div>
             <div class="form-group">
                 <label for="date_finish">Date finish</label>
-                <input type="date" class="form-control" id="date_finish">
+                <input type="date" class="form-control" id="date_finish" onblur="checkFieldIsEmpty(event)" onfocus="focusFormField(event)">
                 <div id="error" class="p-2 m-1"></div>
             </div>
             <div class="form-group">
                 <label for="date_remind">Reminder</label>
-                <input type="date" class="form-control" id="date_remind">
+                <input type="date" class="form-control" id="date_remind" onblur="checkFieldIsEmpty(event)" onfocus="focusFormField(event)">
                 <div id="error" class="p-2 m-1"></div>
             </div>
             <div class="form-group">
@@ -62,5 +63,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../js/update_task.js"></script>
+    <script src="../js/check_form_fields.js"></script>
+    <script src="../js/check_dates.js"></script>
+    <script src="../js/form_handler.js"></script>
 </body>
 </html>

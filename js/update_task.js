@@ -1,13 +1,11 @@
 "use strict";
 
-class LoadTaskData{
+class LoadTaskData {
     constructor(obj_title){
         this.obj = JSON.parse(localStorage.getItem(obj_title));
     };
 
     handleEvent(event){
-        console.log(this.obj.category);
-        console.log(this.obj.priority);
         this.setInputFieldValue();
         this.setSelectFieldValue();
     };
@@ -30,11 +28,34 @@ class LoadTaskData{
     };
 };
 
-class UpdateTaskHandler{
-    constructor(obj){
-        this.task_object = obj;
+class UpdateTaskHandler extends SaveTaskObject {
+    constructor(obj_title){
+        super();
+        this.task_title = obj_title;
+    };
+
+    handleEvent(event){
+        event.preventDefault();
+        this.removeFromSessionStorage();
+
+        localStorage.removeItem(this.task_title);
+        this.setUpdateToSessionStorage();
+
+        this.addToLocalStorage(this.getTaskObject());
+        location.reload();
+    };
+
+    removeFromSessionStorage(){
+        sessionStorage.removeItem("update");
+    };
+
+    setUpdateToSessionStorage(){
+        sessionStorage.setItem("update", this.getTaskObject().title);
     };
 };
 
 
 window.addEventListener("load", new LoadTaskData(sessionStorage.getItem("update")));
+
+button =  document.body.querySelector("button[type=submit]");
+button.addEventListener("click", new UpdateTaskHandler(sessionStorage.getItem("update")));

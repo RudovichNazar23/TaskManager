@@ -28,8 +28,7 @@ class ShowTasksHandler {
 
     showMessage(){
         let message = document.createElement("h4");
-        message.innerHTML = "You don't have any tasks";
-        message.style.position = "absolute";
+        message.innerHTML = "<center>You don't have any tasks</center>";
         this.card_container.append(message);
     };
 

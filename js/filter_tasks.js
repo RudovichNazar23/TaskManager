@@ -1,15 +1,20 @@
 "use strict";
 
 
-class FilterTasksHandler extends CardObject{
+class FilterTasksHandler extends CardObject {
     handleEvent(event){
         this.selectFilter(event);
         this.clearCardContainer();
         let tasks = this.sortTasks(event.target.innerHTML);
-        
-        for(let task of tasks){
-            this.createCardElements(task.title, task.content, task.category, task.priority);
-        };
+
+        if(tasks.length === 0){
+            this.createMessage();
+        }
+        else{
+            for(let task of tasks){
+                this.createCardElements(task.title, task.content, task.category, task.priority);
+            }
+        }
     };
 
     sortTasks(param){
@@ -23,6 +28,18 @@ class FilterTasksHandler extends CardObject{
             };
         };
         return filtered_tasks;
+    };
+
+    createMessage(){
+        let message = document.createElement("a");
+        message.innerHTML = "<center>There aren't any tasks with selected filter</center>";
+        message.href = "#";
+        message.addEventListener("click", function(event){
+            event.preventDefault();
+            event.target.classList.add("title");
+            location.reload();
+        });
+        this.card_container.append(message);
     };
 
     selectFilter(event){

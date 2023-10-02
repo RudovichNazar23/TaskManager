@@ -20,7 +20,20 @@ class CardObject{
         return elem;
     };
 
-    createCardElements(title, content, category, priority){
+    createdoneButton(title, done){
+        let dn;
+        if(!done){
+            dn = this.createDomElement("button", ["btn", "btn-info", "btn-block"], "Mark as done");
+            dn.setAttribute("type", "submit");
+            dn.addEventListener("click", new MarkDoneHandler(title));
+        }
+        else{
+            dn = this.createDomElement("button", ["btn", "btn-success", "btn-block"], "The task is done");
+        };
+        return dn;
+    };
+
+    createCardElements(title, content, category, priority, done){
         let card_div = this.createDomElement("div", ["card", "mt-3"]);
     
         let card_body = this.createDomElement("div", ["card-body", "mt-2",]);
@@ -48,10 +61,12 @@ class CardObject{
         delete_link.dataset.title = title;
         delete_link.addEventListener("click", new DeleteTaskHandler(delete_link));
 
-        this.buildCard(card_div, card_body, card_title, p_body, div_cat_pr, update_link, delete_link);
+        let done_button = this.createdoneButton(title, done);
+
+        this.buildCard(card_div, card_body, card_title, p_body, div_cat_pr, update_link, delete_link, done_button);
     };
 
-    buildCard(card_div, card_body, card_title, p_body, div_cat_pr, update_link, delete_link){
+    buildCard(card_div, card_body, card_title, p_body, div_cat_pr, update_link, delete_link, done){
         this.card_container.append(card_div);
     
         card_div.append(card_body);
@@ -65,6 +80,10 @@ class CardObject{
     
         card_body.append(div_cat_pr);
     
+        card_body.append(this.createDomElement("hr"));
+
+        card_body.append(done);
+
         card_body.append(this.createDomElement("hr"));
     
         card_body.append(update_link);

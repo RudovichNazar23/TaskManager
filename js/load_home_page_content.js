@@ -16,7 +16,8 @@ class ShowTasksHandler extends CardObject {
                 let task_object = JSON.parse(localStorage.getItem(key));
                 this.createCardElements(
                     task_object.title, task_object.content, 
-                    task_object.category, task_object.priority
+                    task_object.category, task_object.priority, 
+                    task_object.done
                 );
             }
         }
